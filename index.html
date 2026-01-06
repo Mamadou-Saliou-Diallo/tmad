@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -64,12 +63,6 @@
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 16px;
-            transition: border-color 0.3s;
-        }
-
-        input:focus, select:focus {
-            outline: none;
-            border-color: #1a5490;
         }
 
         .btn {
@@ -83,19 +76,10 @@
             cursor: pointer;
             width: 100%;
             margin-top: 10px;
-            transition: background 0.3s;
-        }
-
-        .btn:hover {
-            background: #0f3d70;
         }
 
         .btn-print {
             background: #28a745;
-        }
-
-        .btn-print:hover {
-            background: #1e7e34;
         }
 
         .quittance {
@@ -104,7 +88,6 @@
             padding: 50px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             display: none;
-            position: relative;
         }
 
         .quittance.show {
@@ -122,13 +105,11 @@
             font-size: 24px;
             font-weight: bold;
             color: #1a5490;
-            margin-bottom: 10px;
         }
 
         .agency-contact {
             font-size: 14px;
             color: #666;
-            margin: 5px 0;
         }
 
         .title {
@@ -137,13 +118,6 @@
             color: #1a5490;
             text-align: center;
             margin: 40px 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .info-section {
-            margin: 30px 0;
-            text-align: center;
         }
 
         .info-row {
@@ -152,16 +126,7 @@
             padding: 15px;
             background: #f8f9fa;
             border-radius: 8px;
-        }
-
-        .info-label {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .info-value {
-            color: #1a5490;
-            font-weight: bold;
+            text-align: center;
         }
 
         .montant-section {
@@ -173,36 +138,12 @@
             border: 2px solid #1a5490;
         }
 
-        .montant-value {
-            font-size: 28px;
-            font-weight: bold;
-            color: #1a5490;
-        }
-
         .qr-section {
             text-align: center;
             margin-top: 50px;
-        }
-
-        #qrcode {
-            display: inline-block;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .qr-label {
-            margin-top: 15px;
-            font-size: 14px;
-            color: #666;
-        }
-
-        .date-emission {
-            text-align: center;
-            margin-top: 40px;
-            color: #999;
-            font-size: 12px;
+            font-weight: bold;
+            line-height: 1.8;
+            color: #333;
         }
 
         .buttons-section {
@@ -213,253 +154,98 @@
         }
 
         @media print {
-            body {
-                background: white;
-            }
             .form-card, .buttons-section {
-                display: none !important;
-            }
-            .quittance {
-                box-shadow: none;
-                padding: 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .form-card, .quittance {
-                padding: 20px;
-            }
-            .buttons-section {
-                grid-template-columns: 1fr;
+                display: none;
             }
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <!-- Formulaire de saisie -->
-        <div class="form-card">
-            <h1>📄 Générateur de Quittances de Loyer</h1>
-            <p class="subtitle">Agence Afia Kenery Immobilier</p>
-            
-            <form id="quittanceForm">
-                <div class="form-group">
-                    <label for="nomLocataire">👤 Nom du Locataire</label>
-                    <input type="text" id="nomLocataire" required placeholder="Ex: Mamadou Saliou DIALLO">
-                </div>
+<div class="container">
 
-                <div class="form-group">
-                    <label for="mois">📅 Mois</label>
-                    <select id="mois" required>
-                        <option value="">Sélectionner un mois</option>
-                        <option value="Janvier">Janvier</option>
-                        <option value="Février">Février</option>
-                        <option value="Mars">Mars</option>
-                        <option value="Avril">Avril</option>
-                        <option value="Mai">Mai</option>
-                        <option value="Juin">Juin</option>
-                        <option value="Juillet">Juillet</option>
-                        <option value="Août">Août</option>
-                        <option value="Septembre">Septembre</option>
-                        <option value="Octobre">Octobre</option>
-                        <option value="Novembre">Novembre</option>
-                        <option value="Décembre">Décembre</option>
-                    </select>
-                </div>
+    <div class="form-card">
+        <h1>📄 Générateur de Quittances de Loyer</h1>
+        <p class="subtitle">Agence Afia Kenery Immobilier</p>
 
-                <div class="form-group">
-                    <label for="annee">📅 Année</label>
-                    <input type="number" id="annee" required value="2025" min="2020" max="2030">
-                </div>
+        <form id="quittanceForm">
+            <div class="form-group">
+                <label>Nom du Locataire</label>
+                <input type="text" id="nomLocataire" required>
+            </div>
 
-                <div class="form-group">
-                    <label for="datePaiement">📅 Date de Paiement</label>
-                    <input type="date" id="datePaiement" required>
-                </div>
+            <div class="form-group">
+                <label>Mois</label>
+                <select id="mois" required>
+                    <option>Janvier</option><option>Février</option><option>Mars</option>
+                    <option>Avril</option><option>Mai</option><option>Juin</option>
+                    <option>Juillet</option><option>Août</option><option>Septembre</option>
+                    <option>Octobre</option><option>Novembre</option><option>Décembre</option>
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <label for="montant">💰 Montant Payé (FCFA)</label>
-                    <input type="number" id="montant" required placeholder="Ex: 250000" min="0" step="1000">
-                </div>
+            <div class="form-group">
+                <label>Année</label>
+                <input type="number" id="annee" value="2025">
+            </div>
 
-                <button type="submit" class="btn">✨ Générer la Quittance</button>
-            </form>
+            <div class="form-group">
+                <label>Date de Paiement</label>
+                <input type="date" id="datePaiement" required>
+            </div>
+
+            <div class="form-group">
+                <label>Montant</label>
+                <input type="number" id="montant" required>
+            </div>
+
+            <button class="btn">Générer la quittance</button>
+        </form>
+    </div>
+
+    <div class="quittance" id="quittance">
+        <div class="header">
+            <div class="agency-name">AGENCE AFIA KENERY IMMOBILIER</div>
+            <div class="agency-contact">42 Rue Jules Ferry – Dakar</div>
         </div>
 
-        <!-- Quittance générée -->
-        <div class="quittance" id="quittance">
-            <div class="header">
-                <div class="agency-name">AGENCE AFIA KENERY IMMOBILIER</div>
-                <div class="agency-contact">📍 42 Rue Jules Ferry, Dakar, Sénégal</div>
-                <div class="agency-contact">📞 77 676 66 00 / 77 152 95 69</div>
-                <div class="agency-contact">📧 afiakenery@gmail.com</div>
-            </div>
+        <div class="title">Quittance de Loyer</div>
 
-            <div class="title">Quittance de Loyer</div>
+        <div class="info-row" id="displayNom"></div>
+        <div class="info-row" id="displayMois"></div>
+        <div class="info-row" id="displayDatePaiement"></div>
 
-            <div class="info-section">
-                <div class="info-row">
-                    <span class="info-label">Mois :</span>
-                    <span class="info-value" id="displayMois"></span>
-                </div>
+        <div class="montant-section" id="displayMontant"></div>
 
-                <div class="info-row">
-                    <span class="info-label">Locataire :</span>
-                    <span class="info-value" id="displayNom"></span>
-                </div>
+        <!-- TEXTE SANS QR CODE - AJOUT UNIQUE : "Payé" -->
+        <div class="qr-section">
+            Mr Thierno Moussa Ba<br>
+            Resp. Immo. Fina<br>
+            42 Rue Jules Ferry <br>
+             Nat . Payé
+        </div>
 
-                <div class="info-row">
-                    <span class="info-label">Date de Paiement :</span>
-                    <span class="info-value" id="displayDatePaiement"></span>
-                </div>
-
-                <div class="montant-section">
-                    <div class="info-label" style="margin-bottom: 10px;">Montant Payé</div>
-                    <div class="montant-value" id="displayMontant"></div>
-                </div>
-            </div>
-
-            <div class="qr-section">
-                <div id="qrcode"></div>
-                <div class="qr-label">Code QR de vérification</div>
-            </div>
-
-            <div class="date-emission" id="dateEmission"></div>
-
-            <div style="text-align: center; margin-top: 50px; padding-top: 30px; border-top: 2px solid #e0e0e0;">
-                <div style="font-weight: bold; color: #1a5490; margin-bottom: 40px;">
-                    Le Responsable Immobilier et Financier
-                </div>
-                <div style="margin-top: 60px; border-top: 2px solid #333; width: 200px; margin-left: auto; margin-right: auto; padding-top: 5px;">
-                    Signature et Cachet
-                </div>
-            </div>
-
-            <div class="buttons-section">
-                <button onclick="window.print()" class="btn btn-print">🖨️ Imprimer</button>
-                <button onclick="nouvelleQuittance()" class="btn">📝 Nouvelle Quittance</button>
-            </div>
+        <div class="buttons-section">
+            <button onclick="window.print()" class="btn btn-print">Imprimer</button>
+            <button onclick="location.reload()" class="btn">Nouvelle quittance</button>
         </div>
     </div>
 
-    <script>
-        // Générer un hash simple pour la sécurité
-        async function generateHash(data) {
-            const encoder = new TextEncoder();
-            const dataBuffer = encoder.encode(JSON.stringify(data));
-            const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-            return hashHex.substring(0, 16);
-        }
+</div>
 
-        // Formater le montant avec des espaces
-        function formatMontant(montant) {
-            return montant.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-        }
+<script>
+document.getElementById('quittanceForm').addEventListener('submit', function(e){
+    e.preventDefault();
 
-        // Gérer la soumission du formulaire
-        document.getElementById('quittanceForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
+    displayNom.textContent = "Locataire : " + nomLocataire.value;
+    displayMois.textContent = "Période : " + mois.value + " " + annee.value;
+    displayDatePaiement.textContent = "Payé le : " + datePaiement.value;
+    displayMontant.textContent = montant.value + " FCFA";
 
-            const nomLocataire = document.getElementById('nomLocataire').value;
-            const mois = document.getElementById('mois').value;
-            const annee = document.getElementById('annee').value;
-            const datePaiement = document.getElementById('datePaiement').value;
-            const montant = parseInt(document.getElementById('montant').value);
+    document.querySelector('.form-card').style.display = 'none';
+    quittance.classList.add('show');
+});
+</script>
 
-            // Formater la date de paiement
-            const dateObj = new Date(datePaiement);
-            const datePaiementFormatee = dateObj.toLocaleDateString('fr-FR', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric'
-            });
-
-            // Mettre à jour l'affichage
-            document.getElementById('displayMois').textContent = `${mois} ${annee}`;
-            document.getElementById('displayNom').textContent = nomLocataire;
-            document.getElementById('displayDatePaiement').textContent = datePaiementFormatee;
-            document.getElementById('displayMontant').textContent = `${formatMontant(montant)} FCFA`;
-
-            // Date d'émission
-            const dateActuelle = new Date();
-            const dateFormatee = dateActuelle.toLocaleDateString('fr-FR', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric'
-            });
-            document.getElementById('dateEmission').textContent = `Émis le ${dateFormatee}`;
-
-            // Générer le hash de sécurité
-            const donneesSecurite = {
-                locataire: nomLocataire,
-                periode: `${mois} ${annee}`,
-                datePaiement: datePaiementFormatee,
-                montant: montant,
-                agence: "Afia Kenery Immobilier",
-                date: dateFormatee
-            };
-
-            const hash = await generateHash(donneesSecurite);
-
-            // Données pour le QR code
-            const qrData = {
-                locataire: nomLocataire,
-                periode: `${mois} ${annee}`,
-                datePaiement: datePaiementFormatee,
-                montant: montant,
-                hash: hash,
-                agence: "Afia Kenery Immobilier"
-            };
-
-            // Générer le QR code avec l'API Google Charts (toujours disponible)
-            const qrText = encodeURIComponent(JSON.stringify(qrData));
-            const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${qrText}`;
-            
-            const qrContainer = document.getElementById('qrcode');
-            qrContainer.innerHTML = `<img src="${qrImageUrl}" alt="QR Code" style="width: 200px; height: 200px; border: 3px solid #1a5490; border-radius: 10px;">`;
-
-
-            // Afficher la quittance et cacher le formulaire
-            document.querySelector('.form-card').style.display = 'none';
-            document.getElementById('quittance').classList.add('show');
-
-            // Scroll vers la quittance
-            document.getElementById('quittance').scrollIntoView({ behavior: 'smooth' });
-        });
-
-        function nouvelleQuittance() {
-            // Réafficher le formulaire
-            document.querySelector('.form-card').style.display = 'block';
-            document.getElementById('quittance').classList.remove('show');
-            
-            // Scroll vers le formulaire
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Définir le mois et l'année par défaut
-        window.addEventListener('load', function() {
-            const date = new Date();
-            const moisActuel = date.toLocaleString('fr-FR', { month: 'long' });
-            const moisCapitalized = moisActuel.charAt(0).toUpperCase() + moisActuel.slice(1);
-            
-            // Sélectionner le mois actuel dans la liste
-            const selectMois = document.getElementById('mois');
-            for (let option of selectMois.options) {
-                if (option.value === moisCapitalized) {
-                    option.selected = true;
-                    break;
-                }
-            }
-
-            // Définir la date d'aujourd'hui par défaut pour la date de paiement
-            const today = new Date();
-            const yyyy = today.getFullYear();
-            const mm = String(today.getMonth() + 1).padStart(2, '0');
-            const dd = String(today.getDate()).padStart(2, '0');
-            document.getElementById('datePaiement').value = `${yyyy}-${mm}-${dd}`;
-        });
-    </script>
 </body>
 </html>
