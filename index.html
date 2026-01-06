@@ -82,6 +82,10 @@
             background: #28a745;
         }
 
+        .btn-pdf {
+            background: #dc3545;
+        }
+
         .quittance {
             background: white;
             border-radius: 15px;
@@ -149,13 +153,19 @@
         .buttons-section {
             margin-top: 30px;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 15px;
         }
 
         @media print {
+            body {
+                background: white;
+            }
             .form-card, .buttons-section {
                 display: none;
+            }
+            .quittance {
+                box-shadow: none;
             }
         }
     </style>
@@ -217,17 +227,17 @@
 
         <div class="montant-section" id="displayMontant"></div>
 
-        <!-- TEXTE SANS QR CODE - AJOUT UNIQUE : "Payé" -->
         <div class="qr-section">
-            Mr Thierno Moussa Ba<br>
+            Mr Thierno Moussa Ba <br>
             Resp. Immo. Fina<br>
             42 Rue Jules Ferry <br>
-             Nat . Payé
+             Nat .Payé avec succé
         </div>
 
         <div class="buttons-section">
-            <button onclick="window.print()" class="btn btn-print">Imprimer</button>
-            <button onclick="location.reload()" class="btn">Nouvelle quittance</button>
+            <button onclick="window.print()" class="btn btn-print">🖨️ Imprimer</button>
+            <button onclick="telechargerPDF()" class="btn btn-pdf">📥 Télécharger PDF</button>
+            <button onclick="location.reload()" class="btn">📝 Nouvelle quittance</button>
         </div>
     </div>
 
@@ -245,6 +255,10 @@ document.getElementById('quittanceForm').addEventListener('submit', function(e){
     document.querySelector('.form-card').style.display = 'none';
     quittance.classList.add('show');
 });
+
+function telechargerPDF() {
+    window.print();
+}
 </script>
 
 </body>
