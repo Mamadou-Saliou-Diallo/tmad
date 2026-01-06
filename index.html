@@ -157,15 +157,38 @@
             gap: 15px;
         }
 
+        /* =================== Impression sur une seule page =================== */
         @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
             body {
                 background: white;
+                margin: 0;
+                padding: 0;
             }
-            .form-card, .buttons-section {
-                display: none;
+
+            .form-card,
+            .buttons-section {
+                display: none !important;
             }
+
+            .container {
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
             .quittance {
+                display: block;
                 box-shadow: none;
+                padding: 20px;
+                margin: 0;
+                page-break-after: avoid;
+                page-break-before: avoid;
+                page-break-inside: avoid;
             }
         }
     </style>
@@ -176,12 +199,12 @@
 
     <div class="form-card">
         <h1>📄 Générateur de Quittances de Loyer</h1>
-        <p class="subtitle">Agence Afia Kenery Immobilier</p>
+        <p class="subtitle">Agence Afia Kenery Immobilier <br><br> 42 Rue Jules ferry <br> <br>776766600/771529569 <br><br>Afiakenery@gmail.com</p>
 
         <form id="quittanceForm">
             <div class="form-group">
                 <label>Nom du Locataire</label>
-                <input type="text" id="nomLocataire" required>
+                <input type="text" id="nomLocataire" placeholder="Ex : Mamadou Saliou DIALLO" required>
             </div>
 
             <div class="form-group">
@@ -217,6 +240,8 @@
         <div class="header">
             <div class="agency-name">AGENCE AFIA KENERY IMMOBILIER</div>
             <div class="agency-contact">42 Rue Jules Ferry – Dakar</div>
+            <div class="agency-contact">776766600/771529569</div>
+            <div class="agency-contact">Afiakenery@gmail.com</div>
         </div>
 
         <div class="title">Quittance de Loyer</div>
@@ -228,10 +253,9 @@
         <div class="montant-section" id="displayMontant"></div>
 
         <div class="qr-section">
-            Mr Thierno Moussa Ba <br>
+            Mr Thierno Moussa Ba — Payé<br>
             Resp. Immo. Fina<br>
-            42 Rue Jules Ferry <br>
-             Nat .Payé avec succé
+            42 Rue Jules Ferry
         </div>
 
         <div class="buttons-section">
