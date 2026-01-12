@@ -92,6 +92,8 @@
             padding: 50px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             display: none;
+            position: relative;
+            overflow: hidden;
         }
 
         .quittance.show {
@@ -159,7 +161,7 @@
         .signature-section img {
             width: 200px;
             display: block;
-            margin: 0 auto 5px auto; /* centré et petit espace dessous */
+            margin: 0 auto 5px auto;
         }
 
         .signature-section div {
@@ -171,6 +173,26 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 15px;
+        }
+
+        /* =================== Filigrane =================== */
+        .quittance::before {
+            content: "AFIA KENERY IMMOBILIER";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 70px;
+            color: rgba(26, 84, 144, 0.08);
+            font-weight: bold;
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .quittance > * {
+            position: relative;
+            z-index: 1;
         }
 
         /* =================== Impression sur une seule page =================== */
@@ -274,7 +296,6 @@
             Payé avec succès
         </div>
 
-        <!-- Signature centrée avec nom -->
         <div class="signature-section">
             <img src="images/strtm-removebg-preview.png" alt="Signature">
             <div>Mr Thierno BA</div>
